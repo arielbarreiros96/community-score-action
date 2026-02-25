@@ -1,0 +1,25 @@
+{
+  "name": "community-score-action",
+  "version": "1.0.0",
+  "description": "Labels PRs with a tier representing the PR author community contribution score",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --license licenses.txt",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "github",
+    "actions",
+    "community",
+    "score",
+    "labels"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.1"
+  }
+}

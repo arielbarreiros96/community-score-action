@@ -1,0 +1,34 @@
+name: 'Community Score Action'
+description: 'Labels pull requests with a tier representing the PR author community contribution score'
+author: 'arielbarreiros96'
+
+inputs:
+  github-token:
+    description: 'GitHub token with repo write access'
+    required: true
+  data-branch:
+    description: 'Branch used to persist state JSON'
+    default: 'community-score-data'
+  state-path:
+    description: 'Path within data-branch to store the state JSON file'
+    default: '.github/community-score/state.json'
+  label-prefix:
+    description: 'Prefix for tier labels (label will be <prefix>:<tier>)'
+    default: 'community-score'
+  review-states:
+    description: 'Comma-separated list of qualifying review states'
+    default: 'APPROVED,CHANGES_REQUESTED,COMMENTED'
+  tiers:
+    description: 'Comma-separated tier:threshold pairs (sorted descending by threshold)'
+    default: 'A:2,B:1,C:0.5,D:0'
+  exclude-self-reviews:
+    description: 'Exclude reviews where the reviewer is the PR author'
+    default: 'true'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'award'
+  color: 'blue'
